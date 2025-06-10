@@ -24,7 +24,7 @@ export async function authMiddleware(
 
   if (!authorization) throw new AppError("Acesso negado!", 403);
 
-  const [schema, token] = authorization.split("");
+  const [schema, token] = authorization.split(" ");
 
   if (!schema || schema !== "Bearer") throw new AppError("Acesso negado!", 403);
 
