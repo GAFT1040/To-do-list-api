@@ -3,12 +3,12 @@ import { AppError } from "../utils/appError";
 import jwt from "jsonwebtoken";
 import { UsuarioService } from "../usuario/usuario.service";
 import { number } from "joi";
-import { IPayload } from "../types";
+import { IAuth, IPayload } from "../types";
 
 declare global {
   namespace Express {
     interface Request {
-      usuario?: { id: number; nome: string; email: string };
+      usuario?: IAuth;
     }
   }
 }
