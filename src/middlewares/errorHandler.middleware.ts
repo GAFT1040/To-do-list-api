@@ -13,6 +13,7 @@ export function errorHandlerMiddleware(
         mensagem: error.message,
       },
     });
+    return;
   }
 
   if (error.isJoi) {
@@ -31,4 +32,5 @@ export function errorHandlerMiddleware(
       mensagem: "Erro interno do servidor!",
     },
   });
+  return;
 }

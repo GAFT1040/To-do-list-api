@@ -1,4 +1,5 @@
 import { PrismaClient } from "../generated/prisma";
+import { IAtualizarTarefasDTO } from "./dtos/atualiza-tarefas.dto";
 import { ICriarTarefasDTO } from "./dtos/criar-tarefas.dto";
 
 export class TarefaRepository {
@@ -26,6 +27,21 @@ export class TarefaRepository {
       data: {
         ...dto,
         usuario_id,
+      },
+    });
+  }
+
+  async atualizar(id: number, dto: IAtualizarTarefasDTO) {
+    return await this.prisma.tarefa.update({
+      where: { id },
+      data: dto,
+    });
+  }
+
+  async deletar(id: number) {
+    return await this.prisma.tarefa.delete({
+      where: {
+        id,
       },
     });
   }
